@@ -1,0 +1,17 @@
+<h1><%= @list.name %></h1>
+<h3>Movies in this list</h3>
+<ul>
+  <% @bookmarks.each do |bookmark| %>
+    <li><%= bookmark.movie.title %> - <%= bookmark.comment %>
+      <form action="<%= list_bookmarks_path(@list) %>" method="post" class="d-inline">
+        <%# <input type="hidden" name="_method" value="delete">
+        <button type="submit" class="btn btn-warning btn-sm">Remove</button> %>
+        <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you Sure?"} %>
+      </form>
+    </li>
+  <% end %>
+</ul>
+<a href="<%= new_list_bookmark_path(@list) %>">Add Bookmark</a>
+
+
+<%= link_to "Back to Lists", lists_path %>

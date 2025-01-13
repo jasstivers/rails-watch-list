@@ -1,0 +1,10 @@
+<h1>Add Bookmark</h1>
+
+
+<div class="col-4 my-3 bg-light h-100 p-3">
+      <%= simple_form_for [@list, @bookmark] do |f| %>
+        <%= f.association :movie %>
+        <%= f.input :comment %>
+        <%= f.submit "Add a movie", class: "btn btn-primary" %>
+      <% end %>
+</div>
